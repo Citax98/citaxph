@@ -19,7 +19,7 @@ declare(strict_types=1);
 /* =========================================================
  * 1) Identità sito
  * ========================================================= */
-const SITE_NAME  = 'citaxph*';
+const SITE_NAME = 'CITAXPH';
 const SITE_OWNER = 'Federico Citarella';
 
 /* =========================================================
@@ -59,14 +59,16 @@ const DB_CHARSET = 'utf8mb4';
  * DSN PDO.
  * Se usi una porta diversa (es. 3307) aggiungi ;port=3307
  */
-function db_dsn(): string {
+function db_dsn(): string
+{
   return 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET;
 }
 
 /**
  * Connessione PDO singleton.
  */
-function db(): PDO {
+function db(): PDO
+{
   static $pdo = null;
 
   if ($pdo instanceof PDO) {
@@ -74,9 +76,9 @@ function db(): PDO {
   }
 
   $options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
+    PDO::ATTR_EMULATE_PREPARES => false,
   ];
 
   $pdo = new PDO(db_dsn(), DB_USER, DB_PASS, $options);
@@ -102,8 +104,8 @@ define('PROJECT_ROOT', rtrim(str_replace('\\', '/', __DIR__), '/'));
  */
 if (!defined('BASE_URL')) {
   $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-  $host   = $_SERVER['HTTP_HOST'] ?? 'localhost';
-  $path   = rtrim(dirname($_SERVER['SCRIPT_NAME'] ?? '/'), '/');
+  $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+  $path = rtrim(dirname($_SERVER['SCRIPT_NAME'] ?? '/'), '/');
   define('BASE_URL', $scheme . '://' . $host . $path);
 }
 
@@ -126,7 +128,8 @@ if (!defined('STORAGE_ROOT')) {
 /**
  * Crea STORAGE_ROOT se non esiste (solo se permesso dal server).
  */
-function ensure_storage_root(): void {
+function ensure_storage_root(): void
+{
   if (!is_dir(STORAGE_ROOT)) {
     @mkdir(STORAGE_ROOT, 0755, true);
   }
@@ -135,11 +138,13 @@ function ensure_storage_root(): void {
 /* =========================================================
  * 6) Helper (escape + redirect)
  * ========================================================= */
-function h(string $v): string {
+function h(string $v): string
+{
   return htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
 }
 
-function redirect(string $to): void {
+function redirect(string $to): void
+{
   header('Location: ' . $to);
   exit;
 }

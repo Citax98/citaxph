@@ -111,3 +111,173 @@
         linear-gradient(135deg, rgba(124,92,255,.22), rgba(0,180,255,.12)),
         repeating-linear-gradient(45deg, rgba(255,255,255,.08) 0 8px, rgba(255,255,255,.02) 8px 16px);
     }
+    /* ===== Photo modal fixed size ===== */
+.modal-fixed {
+  max-width: 900px;     /* larghezza fissa desktop */
+  width: 90%;           /* fallback mobile */
+}
+
+@media (max-width: 768px) {
+  .modal-fixed {
+    max-width: 95%;
+  }
+}
+
+#photoModalImg {
+  max-height: 70vh;     /* NON cresce troppo in altezza */
+  object-fit: contain; /* niente crop */
+}
+:root {
+        --df-bg: #0b0e14;
+        --df-card: rgba(255, 255, 255, .06);
+        --df-border: rgba(255, 255, 255, .12);
+        --df-text: rgba(255, 255, 255, .92);
+        --df-muted: rgba(255, 255, 255, .70);
+        --df-accent: #7c5cff;
+        /* puoi cambiare */
+    }
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        background: radial-gradient(1200px 800px at 15% 10%, rgba(124, 92, 255, .25), transparent 55%),
+            radial-gradient(900px 700px at 90% 20%, rgba(0, 180, 255, .16), transparent 50%),
+            var(--df-bg);
+        color: var(--df-text);
+    }
+
+    .navbar {
+        background: rgba(11, 14, 20, .55);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--df-border);
+    }
+
+    .df-hero {
+        padding: 5.5rem 0 3.5rem;
+    }
+
+    .df-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        padding: .4rem .75rem;
+        border: 1px solid var(--df-border);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, .04);
+        color: var(--df-muted);
+        font-size: .95rem;
+    }
+
+    .df-card {
+        background: var(--df-card);
+        border: 1px solid var(--df-border);
+        border-radius: 18px;
+    }
+
+    .df-card .card-body {
+        padding: 1.25rem;
+    }
+
+    .df-btn-primary {
+        --bs-btn-color: #fff;
+        --bs-btn-bg: var(--df-accent);
+        --bs-btn-border-color: var(--df-accent);
+        --bs-btn-hover-bg: #6a4dff;
+        --bs-btn-hover-border-color: #6a4dff;
+        --bs-btn-focus-shadow-rgb: 124, 92, 255;
+    }
+
+    .df-btn-ghost {
+        border: 1px solid var(--df-border);
+        background: rgba(255, 255, 255, .04);
+        color: var(--df-text);
+    }
+
+    .df-btn-ghost:hover {
+        background: rgba(255, 255, 255, .07);
+        border-color: rgba(255, 255, 255, .18);
+        color: var(--df-text);
+    }
+
+    .df-grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    .df-hero-left {
+        grid-column: span 7;
+    }
+
+    .df-hero-right {
+        grid-column: span 5;
+    }
+
+    @media (max-width: 991px) {
+
+        .df-hero-left,
+        .df-hero-right {
+            grid-column: 1 / -1;
+        }
+
+        .df-hero {
+            padding-top: 4.75rem;
+        }
+    }
+
+    .df-kpi {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 1.25rem;
+        color: var(--df-muted);
+        font-size: .95rem;
+    }
+
+    .df-kpi b {
+        color: var(--df-text);
+    }
+
+    .df-divider {
+        height: 1px;
+        width: 100%;
+        background: var(--df-border);
+        margin: 2.75rem 0;
+    }
+
+    .df-footer {
+        border-top: 1px solid var(--df-border);
+        background: rgba(0, 0, 0, .18);
+    }
+
+    /* Placeholder thumbs */
+    .df-thumb {
+        height: 160px;
+        border-radius: 14px;
+        border: 1px solid var(--df-border);
+        background:
+            linear-gradient(135deg, rgba(124, 92, 255, .22), rgba(0, 180, 255, .12)),
+            repeating-linear-gradient(45deg, rgba(255, 255, 255, .08) 0 8px, rgba(255, 255, 255, .02) 8px 16px);
+    }
+/* ===============================
+   HOME – SEZIONE ULTIMI EVENTI
+   =============================== */
+
+.df-section-events {
+  padding: 2rem;
+  border-radius: 18px;
+
+  /* separazione visiva dallo sfondo hero */
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.01)
+  );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 10px 30px rgba(0,0,0,0.35);
+}
